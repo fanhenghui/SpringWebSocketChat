@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <title>Chat</title>
+        <meta charset="UTF-8" />
+        <link href="../../css/style.css" th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+    </head>
+    <body>
+        
+            <div class="box">
+               
+                    <div class="full" id="messages">
+                        <p th:each="message: ${messages}" th:text="${message}"></p>
+                    </div>
+                    <div class="full" id="userbox">
+                        
+                    </div>
+                    <div id="canvasdiv" class="hidden">
+                            <canvas class="sketchpad" id="sketchpad"></canvas>
+                            <div id="canvasbuttons"><ul>
+                                    <li><input type="color" id="canvascolor" onchange="canvascolor()"></input></li>
+                                    <li><label id="canvassetbtn" class="btn btn-default btn-file">Aseta kuva<input type="file" name="canvasfile" id="canvasfile" accept=".png,.jpeg,.jpg," style="display: none;"/></label> </li>                               
+                                <li><input class="btn btn-default btn-file" type="button" value="Tyhjennä" onclick="emptycanvas()"></input> </li>
+                                <li><input class="btn btn-default btn-file" type="button" value="Piilota" onclick="hidecanvas()"></input> </li>
+                                        <li>
+                                            <input class="btn btn-default btn-file" type="button" value="Undo" onclick="cancelcanvas()"></input>
+                                             <input class="btn btn-default btn-file" type="button" value="Redo" onclick="redocanvas()"></input>
+                                        </li>
+                                <li></li>
+                                <li><input class="btn btn-default btn-file" type="button" value="Lähetä" onclick="sendcanvas()"></input>  </li>  
+                                </ul></div>
+                    </div>
+
+                <div id="messagebox">
+                    <div id="helpdiv"><input class="mySendButton" type="button" onclick="send();" value=">>>"/></div>
+                        
+                        <textArea maxlength="300" name="message" id="message" autofocus="true"></textArea>
+                        <div>    
+                        <label style="float:left;" id="imgsendbtn" class="btn btn-default btn-file">Lähetä kuva<input type="file" name="file" id="file" accept=".png,.jpeg,.jpg,.gif" style="display: none;"/></label> 
+                        </div>
+                        <input type="button" onclick="showCanvas()" value="Piirrä kuva" class="btn btn-default btn-file"></input>
+                        <input type="button" id="record" value="Nauhoita äänite" class="btn btn-default btn-file"></input>
+                        <audio src="" id="audio"></audio>
+                        <img class="hidden" id="recording" src="project/rec.png" height="30" ></img>
+                        <span id="action-info"></span>
+
+                    <span class="hidden"  id="username" th:text="${username}"></span>  
+                    <span class="hidden" id="pkey" th:text="${pkey}"></span>
+                </div>
+                 
+        </div>
+
+    
+        
+
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        
+        <script type="text/javascript" src="../../js/sketchpad/lib/sketchpad.js" th:src="@{/js/sketchpad/lib/sketchpad.js}"></script>
+        <script type="text/javascript" src="../../js/sketchpad/scripts/sketchpad.js" th:src="@{/js/sketchpad/scripts/sketchpad.js}"></script>
+        
+        <script type="text/javascript" src="../../js/record/src/recorder.js" th:src="@{/js/record/src/recorder.js}"></script>
+        <script type="text/javascript" src="../../js/record/src/Fr.voice.js" th:src="@{/js/record/src/Fr.voice.js}"></script>
+        <script type="text/javascript" src="../../js/record/js/app.js" th:src="@{/js/record/js/app.js}"></script>
+        
+        <script type="text/javascript" src="../../js/upload.js" th:src="@{/js/upload.js}"></script>
+        <script type="text/javascript" src="../../js/script.js" th:src="@{/js/script.js}"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
+</html>

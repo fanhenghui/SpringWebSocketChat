@@ -1,0 +1,14 @@
+wad\controller\ChatController.class
+wad\service\Poliitikko.class
+wad\service\ImageService.class
+wad\domain\Message.class
+wad\service\MessageService.class
+wad\WebSocketDisconnectListener.class
+wad\domain\User.class
+wad\service\AdminBot.class
+wad\controller\DefaultController.class
+wad\service\UserService.class
+wad\service\RoBotti.class
+wad\config\WebSocketConfiguration.class
+wad\Chatti.class
+wad\service\RacistBot.class
